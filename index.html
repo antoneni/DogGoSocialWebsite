@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Nguyen | DogGoSocial Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand: #ff6b6b; --brand-dark: #f97316; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #030303; color: #fff; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Animated Mesh Background */
+        .mesh-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: 
+                radial-gradient(at 0% 0%, rgba(255, 107, 107, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.1) 0px, transparent 50%);
+            filter: blur(80px); animation: mesh 20s infinite alternate;
+        }
+        @keyframes mesh { 0% { transform: scale(1); } 100% { transform: scale(1.2) rotate(5deg); } }
+
+        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gradient { background: linear-gradient(135deg, #ff6b6b, #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .code-window { background: #0d0d0d; border: 1px solid #222; font-family: 'Fira Code', monospace; }
+        .feature-tag { background: rgba(249, 115, 22, 0.1); color: #f97316; padding: 4px 12px; border-radius: 99px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; }
+        
+        /* Pulse Radar Effect for Hero */
+        .radar-pulse {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 100%; height: 100%; border-radius: 3rem;
+            border: 2px solid rgba(249, 115, 22, 0.3);
+            animation: radar 4s linear infinite;
+            z-index: -1;
+        }
+        @keyframes radar {
+            0% { width: 80%; height: 80%; opacity: 1; }
+            100% { width: 150%; height: 150%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mesh-bg"></div>
+
+    <nav class="fixed w-full z-50 glass border-b border-white/5 px-8 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-extrabold tracking-tighter uppercase">ANTHONY<span class="text-orange-500">.</span></div>
+            <div class="hidden md:flex space-x-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+                <a href="#mission" class="hover:text-white transition">Mission</a>
+                <a href="#stack" class="hover:text-white transition">Stack</a>
+                <a href="#logic" class="hover:text-white transition">Logic</a>
+                <a href="#gallery" class="hover:text-white transition">UI/UX</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-48 pb-24 px-6 text-center">
+        <h1 class="text-7xl md:text-9xl font-extrabold mb-8 tracking-tight">
+    DogGo<span class="text-gradient">Social</span>
+</h1>
+        <p class="text-gray-400 max-w-3xl mx-auto text-xl font-light leading-relaxed mb-12">
+            A high-performance social utility for dog owners. Engineered with 
+            <span class="text-white font-bold">React Native</span>, 
+            <span class="text-white font-bold">Supabase</span>, and 
+            <span class="text-white font-bold">PostgreSQL</span>.
+        </p>
+
+        <div class="max-w-2xl mx-auto relative">
+            <div class="radar-pulse"></div>
+            <div class="radar-pulse" style="animation-delay: 2s;"></div>
+            <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 group bg-black">
+                <img src="hero-mockup.png" alt="Hero" class="w-full group-hover:scale-105 transition duration-1000">
+            </div>
+        </div>
+    </header>
+
+    <section id="mission" class="py-32 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+        <div>
+            <h2 class="text-5xl font-extrabold mb-8 leading-tight">Solving Real-World <br> Pet Isolation.</h2>
+            <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                The core problem: Dog owners want to socialize their pets but lack real-time data on park activity. Browsing static reviews isn't enough.
+            </p>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                <strong>DogGoSocial</strong> functions as a live "status board" for the community. By combining GPS tracking with social check-ins, I created a platform where owners can verify the "vibe" of a park before they even leave their house.
+            </p>
+        </div>
+        <div class="glass p-10 rounded-[2.5rem]">
+            <div class="flex gap-4 mb-8">
+                <div class="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center">🐕</div>
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center">📍</div>
+                <div class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center">💬</div>
+            </div>
+            <h4 class="text-2xl font-bold mb-4 italic text-orange-500">Core Value Propositions:</h4>
+            <ul class="space-y-4 text-gray-300">
+                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span> Sub-second Latency Location Polling</li>
+                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span> Haptic-Feedback UX Loops (Expo-Haptics)</li>
+                <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-orange-500 rounded-full"></span> Dynamic Temperament Pin-Mapping</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="stack" class="py-32 bg-white/[0.01] border-y border-white/5 px-6 text-center">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-16 italic">The Engineering Stack</h2>
+            
+            
+
+            <div class="grid md:grid-cols-4 gap-4 mt-16 text-left">
+                <div class="glass p-6 rounded-2xl border-l-4 border-blue-500">
+                    <h5 class="font-black text-xs mb-2">FRONTEND</h5>
+                    <p class="text-sm text-gray-400">React Native / Expo</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-l-4 border-green-500">
+                    <h5 class="font-black text-xs mb-2">BACKEND</h5>
+                    <p class="text-sm text-gray-400">Supabase (PostgreSQL)</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-l-4 border-orange-500">
+                    <h5 class="font-black text-xs mb-2">GEO-SPATIAL</h5>
+                    <p class="text-sm text-gray-400">PostGIS Geography</p>
+                </div>
+                <div class="glass p-6 rounded-2xl border-l-4 border-purple-500">
+                    <h5 class="font-black text-xs mb-2">SENSORY UX</h5>
+                    <p class="text-sm text-gray-400">Expo-AV / Haptics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="logic" class="py-32 max-w-5xl mx-auto px-6">
+        <div class="flex justify-between items-end mb-12">
+            <h2 class="text-4xl font-extrabold italic">Under the Hood</h2>
+            <div class="text-orange-500 font-mono text-xs tracking-widest">./logic/App.tsx</div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10 mb-20">
+            <div class="space-y-6">
+                <div class="feature-tag">Audio Sensory Feedback</div>
+                <h3 class="text-2xl font-bold">Tactile Check-Ins</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    The app utilizes <code>expo-av</code> to trigger sound cues during check-in/out. Paired with <code>Haptics.notificationAsync</code>, this provides physical confirmation, ensuring the interface feels responsive even when the device is not in direct line-of-sight.
+                </p>
+            </div>
+            <div class="code-window p-6 rounded-2xl text-[10px] text-gray-400 leading-6">
+                <span class="text-orange-500">const</span> playSound = <span class="text-orange-500">async</span> (type) => {<br>
+                &nbsp;&nbsp;<span class="text-blue-400">Haptics</span>.notificationAsync(type === <span class="text-green-400">'in'</span> ? <span class="text-gray-200">Success</span> : <span class="text-gray-200">Warning</span>);<br>
+                &nbsp;&nbsp;<span class="text-orange-500">const</span> { sound } = <span class="text-orange-500">await</span> Audio.Sound.createAsync(<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{ uri: type === <span class="text-green-400">'in'</span> ? <span class="text-gray-200">IN_URL</span> : <span class="text-gray-200">OUT_URL</span> }<br>
+                &nbsp;&nbsp;);<br>
+                &nbsp;&nbsp;<span class="text-orange-500">await</span> sound.playAsync();<br>
+                };
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="code-window p-6 rounded-2xl text-[10px] text-gray-400 leading-6 order-2 md:order-1">
+                <span class="text-orange-500">const</span> { data } = <span class="text-orange-500">await</span> supabase<br>
+                &nbsp;&nbsp;.from(<span class="text-green-400">'check_ins'</span>)<br>
+                &nbsp;&nbsp;.insert([{ <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;dog_name: dogName, <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;location: <span class="text-green-400">`POINT(${long} ${lat})`</span>,<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;is_active: <span class="text-blue-400">true</span> <br>
+                &nbsp;&nbsp;}]);
+            </div>
+            <div class="space-y-6 order-1 md:order-2 text-right md:text-left">
+                <div class="feature-tag">Supabase & PostGIS</div>
+                <h3 class="text-2xl font-bold">Spatial Database Logic</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    By using **PostGIS Point geography** in Supabase, I enabled native SQL spatial queries. This allows for highly efficient radius filtering (e.g., fetching all active dogs within 500 meters) without overloading the React Native client with unnecessary data processing.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-extrabold mb-20 text-center tracking-tight">Full System <span class="text-gradient">Gallery.</span></h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <img src="IMG_5436-portrait.png" class="rounded-[2.5rem] border border-white/10 hover:border-orange-500 transition duration-500 shadow-2xl">
+                    <h5 class="text-center text-[10px] font-black text-gray-600 uppercase">Onboarding UI</h5>
+                </div>
+                <div class="space-y-4 pt-12">
+                    <img src="IMG_5438-portrait.png" class="rounded-[2.5rem] border border-white/10 hover:border-orange-500 transition duration-500 shadow-2xl">
+                    <h5 class="text-center text-[10px] font-black text-gray-600 uppercase">Map Integration</h5>
+                </div>
+                <div class="space-y-4">
+                    <img src="IMG_5439-portrait.png" class="rounded-[2.5rem] border border-white/10 hover:border-orange-500 transition duration-500 shadow-2xl">
+                    <h5 class="text-center text-[10px] font-black text-gray-600 uppercase">Pet Logic Layer</h5>
+                </div>
+                <div class="space-y-4 pt-12">
+                    <img src="IMG_5440-portrait.png" class="rounded-[2.5rem] border border-white/10 hover:border-orange-500 transition duration-500 shadow-2xl">
+                    <h5 class="text-center text-[10px] font-black text-gray-600 uppercase">Realtime Chat Board</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-40 text-center relative overflow-hidden glass border-t border-white/5">
+        <div class="relative z-10">
+            <p class="text-orange-500 font-black text-xs uppercase tracking-[0.5em] mb-4">Anthony Nguyen</p>
+            <h2 class="text-6xl font-extrabold mb-12 tracking-tighter italic pr-4">Let's build <br> something bold.</h2>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="mailto:apn2443@gmail.com" class="px-12 py-5 bg-orange-600 rounded-full font-black text-white hover:bg-orange-500 transition shadow-[0_0_40px_rgba(234,88,12,0.3)] tracking-widest uppercase text-xs">
+                Contact Engineer
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
