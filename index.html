@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Study: DogGoSocial | Anthony Nguyen</title>
+    <title>Anthony Nguyen | DogGoSocial Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -15,7 +15,6 @@
             filter: blur(80px);
         }
         .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .code-block { background: #0d0d0d; border-radius: 12px; padding: 20px; border: 1px solid #222; font-family: monospace; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -24,107 +23,78 @@
 
     <nav class="fixed w-full z-50 glass border-b border-white/5 px-8 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="font-bold tracking-tighter uppercase">TECHNICAL <span class="text-orange-500">CASE STUDY</span></div>
-            <a href="https://github.com/antoneni/DogGoSocialWebsite" class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition">← Back to Repo</a>
+            <div class="font-bold tracking-tighter uppercase text-sm">Anthony Nguyen <span class="text-orange-500">// Project Case Study</span></div>
+            <a href="https://github.com/antoneni/DogGoSocialWebsite" class="text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-white transition">GitHub Repo</a>
         </div>
     </nav>
 
     <header class="pt-40 pb-20 px-6 max-w-5xl mx-auto">
         <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">DogGoSocial</h1>
-        <p class="text-orange-500 font-bold mb-8 uppercase tracking-[0.3em] text-sm">Full-Stack Mobile Engineering // Geospatial Systems</p>
+        <p class="text-orange-500 font-bold mb-8 uppercase tracking-widest text-sm">React Native // Supabase // PostgreSQL</p>
         
-        <div class="grid md:grid-cols-3 gap-8 mb-16 text-sm">
+        <div class="grid md:grid-cols-3 gap-6 mb-16 text-sm">
             <div class="glass p-6 rounded-2xl">
-                <p class="text-gray-500 mb-1">Role</p>
-                <p class="font-bold">Software Engineer</p>
+                <p class="text-gray-500 mb-1">Project Type</p>
+                <p class="font-bold text-white">Full-Stack Mobile App</p>
             </div>
             <div class="glass p-6 rounded-2xl">
-                <p class="text-gray-500 mb-1">Core Tech</p>
-                <p class="font-bold">React Native, Supabase, PostGIS</p>
+                <p class="text-gray-500 mb-1">Key Tech</p>
+                <p class="font-bold text-white">PostGIS & Real-time DB</p>
             </div>
             <div class="glass p-6 rounded-2xl">
-                <p class="text-gray-500 mb-1">Status</p>
-                <p class="font-bold">Functional MVP (Expo Ready)</p>
+                <p class="text-gray-500 mb-1">Location</p>
+                <p class="font-bold text-white">Sunnyvale, CA</p>
             </div>
         </div>
 
-        <div class="max-w-2xl mx-auto rounded-[2rem] overflow-hidden border border-white/10">
+        <div class="max-w-2xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl">
             <img src="hero-mockup.png" class="w-full">
         </div>
     </header>
 
     <section class="py-20 px-6 max-w-5xl mx-auto">
-        <h2 class="text-3xl font-extrabold mb-12 italic border-l-4 border-orange-500 pl-6">Problem & Objective</h2>
-        <div class="grid md:grid-cols-2 gap-12 text-gray-400 leading-relaxed">
+        <h2 class="text-3xl font-extrabold mb-8 italic border-l-4 border-orange-500 pl-6">The Goal</h2>
+        <div class="grid md:grid-cols-2 gap-12 text-gray-400 leading-relaxed text-sm">
             <p>
-                The primary engineering challenge was to create a <strong>low-latency, event-driven map interface</strong> that provides real-time park occupancy data. Unlike typical social apps, the data here is ephemeral; check-ins must be accurate within seconds and expire automatically to maintain system integrity.
+                I wanted to build an app that helps dog owners see how busy a park is in real-time. The goal was to move away from static reviews and create a live "check-in" system where users can see exactly which dogs are at the park right now.
             </p>
             <p>
-                I architected the backend using <strong>Supabase (PostgreSQL)</strong> to leverage native spatial indexing, ensuring that querying hundreds of live coordinates remains performant on mobile hardware.
+                I used <strong>Supabase</strong> for the backend because it handles real-time updates easily, and <strong>PostgreSQL</strong> with <strong>PostGIS</strong> to manage all the map coordinates efficiently.
             </p>
         </div>
     </section>
 
-    <section class="py-20 bg-white/[0.01] border-y border-white/5">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl font-extrabold mb-12 text-center">System Architecture</h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 mt-12">
-                <div class="text-center">
-                    <h4 class="font-bold mb-2">Frontend Client</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">React Native (TypeScript) managing geolocation via <code>expo-location</code> and global state via Hooks.</p>
+    <section class="py-20 px-6 max-w-5xl mx-auto border-t border-white/5">
+        <h2 class="text-3xl font-extrabold mb-16 text-center">Technical Breakdown</h2>
+        
+        <div class="space-y-24">
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">1. Fixing Map Clusters</h3>
+                    <p class="text-gray-400 text-sm mb-4">When dogs are at the same spot, their markers stack on top of each other. I wrote a small "jitter" function that uses math to nudge the icons slightly so you can see and click each one individually.</p>
                 </div>
                 <div class="text-center">
-                    <h4 class="font-bold mb-2">Spatial Logic</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Supabase RPC (Remote Procedure Calls) calculating distances using <strong>PostGIS</strong> on the server side.</p>
-                </div>
-                <div class="text-center">
-                    <h4 class="font-bold mb-2">Sensory Layer</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Asynchronous UX feedback loops utilizing <code>expo-av</code> and native Haptic engines.</p>
+                    <img src="IMG_5448.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="py-20 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-extrabold mb-12">Development Deep-Dive</h2>
-    
-    <div class="space-y-24">
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-                <h3 class="text-xl font-bold mb-4">1. Geofencing & Pin Optimization</h3>
-                <p class="text-gray-400 text-sm mb-4">Implemented a "jitter" algorithm to spread markers that share identical GPS coordinates, preventing UI stacking in popular areas.</p>
-                <ul class="text-xs text-orange-500 font-bold space-y-2">
-                    <li>+ Optimized PostGIS spatial queries</li>
-                    <li>+ Vibe-based conditional rendering</li>
-                </ul>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="order-2 md:order-1 text-center">
+                    <img src="IMG_5436-portrait.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h3 class="text-xl font-bold mb-4">2. Real-Time Chat</h3>
+                    <p class="text-gray-400 text-sm mb-4">I used Supabase listeners to build a live chat. This lets owners talk to people currently at the park to check things like the weather or the current "vibe" before heading out.</p>
+                </div>
             </div>
-            <div class="order-2 md:order-1 text-center">
-                 <img src="IMG_5448.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
-            </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-10 items-center">
-            <div class="order-2 md:order-1 text-center">
-                <img src="IMG_5436-portrait.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
-            </div>
-            <div class="order-1 md:order-2">
-                <h3 class="text-xl font-bold mb-4">2. Real-Time Messaging State</h3>
-                <p class="text-gray-400 text-sm mb-4">Utilized <code>supabase-js</code> listeners to create a live message board. Messages are strictly coupled with the active "check-in" session to ensure community relevance.</p>
-            </div>
-        </div>
 
             <div class="grid md:grid-cols-2 gap-10 items-center">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">3. Dynamic Pet Logic Layer</h3>
-                    <p class="text-gray-400 text-sm mb-4">Developed a robust metadata system for dog profiles. This allows for conditional UI rendering based on temperament, and activity level, providing a safer environment for users.</p>
-                    <ul class="text-xs text-orange-500 font-bold space-y-2">
-                        <li>+ Relational PostgreSQL Schema</li>
-                        <li>+ Dynamic Icon Mapping</li>
-                    </ul>
+                    <h3 class="text-xl font-bold mb-4">3. Custom Dog Profiles</h3>
+                    <p class="text-gray-400 text-sm mb-4">Users can set up their dog's breed and temperament. I built the database so these traits are linked to the check-in, helping other owners know if the current group of dogs is a good fit for their pet.</p>
                 </div>
-                <div class="order-2 md:order-1 text-center">
-                     <img src="IMG_5439-portrait.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
+                <div class="text-center">
+                    <img src="IMG_5439-portrait.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
                 </div>
             </div>
 
@@ -133,36 +103,16 @@
                     <img src="IMG_5440-portrait.png" class="rounded-xl border border-white/10 w-2/3 mx-auto shadow-lg">
                 </div>
                 <div class="order-1 md:order-2">
-                    <h3 class="text-xl font-bold mb-4">4. Native UX Components</h3>
-                    <p class="text-gray-400 text-sm mb-4">Focusing on high-fidelity mobile performance, I utilized React Native FlatLists for smooth message scrolling and integrated native Haptic feedback for every successful park check-in.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-orange-600 text-white px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-extrabold mb-6 italic">Engineering Impact</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div>
-                    <p class="text-4xl font-black mb-2">0.4s</p>
-                    <p class="text-xs uppercase font-bold opacity-80">Avg. Sync Latency</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-black mb-2">100%</p>
-                    <p class="text-xs uppercase font-bold opacity-80">Serverless Architecture</p>
-                </div>
-                <div>
-                    <p class="text-4xl font-black mb-2">Typescript</p>
-                    <p class="text-xs uppercase font-bold opacity-80">Type-Safe Logic</p>
+                    <h3 class="text-xl font-bold mb-4">4. Simple & Responsive UI</h3>
+                    <p class="text-gray-400 text-sm mb-4">I focused on making the app feel snappy. I used React Native hooks to manage the app state and added haptic feedback (vibrations) so the app feels more tactile when you check in.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="py-20 text-center glass border-t border-white/5">
-        <p class="text-gray-500 text-xs mb-8">Developed by Anthony Nguyen &bull; Sunnyvale, CA</p>
-        <a href="mailto:apn2443@gmail.com" class="px-10 py-4 border border-white/20 rounded-full font-bold hover:bg-white hover:text-black transition">Contact for Full Code Review</a>
+        <p class="text-gray-500 text-xs mb-8">Anthony Nguyen // 2026</p>
+        <a href="mailto:apn2443@gmail.com" class="px-10 py-4 bg-white text-black rounded-full font-bold hover:bg-orange-500 hover:text-white transition">Email Me</a>
     </footer>
 
 </body>
